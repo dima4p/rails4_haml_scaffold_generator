@@ -8,9 +8,10 @@ module Haml
 
       argument :attributes, :type => :array, :default => [], :banner => "field:type field:type"
 
-      class_option :layout,    :type => :boolean
-      class_option :singleton, :type => :boolean, :desc => "Supply to skip index view"
-      class_option :cancan,    :type => :boolean, :desc => "Use cancan patterns"
+      class_option :layout,      type: :boolean
+      class_option :singleton,   type: :boolean, desc: "Supply to skip index view"
+      class_option :cancan,      type: :boolean, desc: "Use cancan patterns"
+      class_option :simple_form, type: :boolean, desc: "Use simple_form"
 
       def create_root_folder
         empty_directory File.join("app/views", controller_file_path)

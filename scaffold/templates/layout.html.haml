@@ -2,11 +2,29 @@
 %html
   %head
     %title== <%= controller_class_name %>: #{ controller.action_name }
-    = stylesheet_link_tag 'scaffold'
-    = javascript_include_tag :defaults
+    %title
+      = yield(:title) || "Untitled"
+      |
+      = t :application_name
+    %meta{"http-equiv"=>"Content-Type", :content=>"text/html; charset=utf-8"}/
+    = favicon_link_tag 'application.ico'
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tag
-  
-  %body
-    %p.notice= notice
-    
-    = yield
+    = yield(:head)
+
+  %body{:lang => I18n.locale,
+    :class => [controller.controller_name, controller.action_name, yield(:body_class)]}
+    -# @debug_ability.each do |ability|
+      %p
+        = ability.inspect
+    #container
+      #content
+        - flash.each do |name, msg|
+          = content_tag :div, msg.html_safe, :id => "flash_#{name}"
+
+        - if show_title? rescue false
+          %h1
+            = yield(:title)
+
+        = yield
