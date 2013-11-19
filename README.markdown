@@ -25,18 +25,14 @@ Original idea from [Paul Barry's article on custom genrators][OriginalIdea]
 
         bundle install
 
-4. Run
-
-        haml --rails .
-        
-5. Edit config/application.rb and add the following:
+4. Edit config/application.rb and add the following:
 
         config.generators do |g|
             g.template_engine :haml
         end
 
 
-6. Either 
+5. Either
 
         git clone git://github.com/dima4p/rails4_haml_scaffold_generator.git lib/generators/haml
 
@@ -44,7 +40,7 @@ Original idea from [Paul Barry's article on custom genrators][OriginalIdea]
 
         git submodule add git://github.com/dima4p/rails4_haml_scaffold_generator.git lib/generators/haml
   
-7. Create stuff with:
+6. Create stuff with:
 
         rails generate controller ControllerName index
         rails generate mailer ExamplesNotifications
@@ -56,10 +52,11 @@ Original idea from [Paul Barry's article on custom genrators][OriginalIdea]
         rails generate haml:mailer ExamplesNotifications
         rails generate haml:scaffold FancyModel
 
-8. You can also add --cancan if you use the cancan authorization
+7. You can also add --cancan if you use the cancan authorization
        rails generate scaffold FancyModel <fields> --cancan
 
-9. You can also add --simple_form if you use gem simple_form
+8. You can also add --simple_form if you use gem simple_form
+       rails generate scaffold FancyModel <fields> --simple_form
 
 ## TODO
 
