@@ -59,6 +59,8 @@ Original idea from [Paul Barry's article on custom genrators][OriginalIdea]
 8. You can also add --cancan if you use the cancan authorization
        rails generate scaffold FancyModel <fields> --cancan
 
+9. You can also add --simple_form if you use gem simple_form
+
 ## TODO
 
 * Gemify (?)
