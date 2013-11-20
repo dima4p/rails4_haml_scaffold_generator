@@ -34,11 +34,11 @@ Original idea from [Paul Barry's article on custom genrators][OriginalIdea]
 
 5. Either
 
-        git clone git://github.com/dima4p/rails4_haml_scaffold_generator.git lib/generators/haml
+        git clone https://github.com/dima4p/rails4_haml_scaffold_generator.git lib/generators/haml
 
     ...or...
 
-        git submodule add git://github.com/dima4p/rails4_haml_scaffold_generator.git lib/generators/haml
+        git submodule add https://github.com/dima4p/rails4_haml_scaffold_generator.git lib/generators/haml
   
 6. Create stuff with:
 
