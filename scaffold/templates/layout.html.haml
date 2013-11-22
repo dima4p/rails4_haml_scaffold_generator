@@ -24,7 +24,7 @@
         - flash.each do |name, msg|
           = content_tag :div, msg.html_safe, :id => "flash_#{name}"
 
-        - if show_title? rescue false
+        - if respond_to?(:show_title?) and show_title?
           %h1
             = yield(:title)
 
