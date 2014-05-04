@@ -1,6 +1,6 @@
 - title t('.title')
 
-%p
+%p.nav
 <% if options[:cancan] -%>
   - if can? :index, <%= class_name %>
     = link_to t('back'), <%= index_helper %>_path, class: 'index'
