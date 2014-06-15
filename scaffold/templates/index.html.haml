@@ -11,9 +11,15 @@
 - if @grid
   = grid @grid do |g|
 <% for attribute in attributes -%>
+<% if attribute.reference? -%>
+    - g.column name: <%= class_name %>.human_attribute_name(:<%= attribute.name %>),
+      :attribute => '<%= attribute.name %>_id' do |<%= singular_table_name %>|
+      - <%= singular_table_name %>.<%= attribute.name %>.name
+<% else -%>
     - g.column name: <%= class_name %>.human_attribute_name(:<%= attribute.name %>),
       :attribute => '<%= attribute.name %>' do |<%= singular_table_name %>|
       - <%= singular_table_name %>.<%= attribute.name %>
+<% end -%>
 <% end -%>
 <% if options[:cancan] -%>
     - g.column do |<%= singular_table_name %>|
@@ -84,7 +90,11 @@
     - @<%= plural_table_name %>.each do |<%= singular_table_name %>|
       %tr{ :class => cycle(:odd, :even) }
 <% for attribute in attributes -%>
+<% if attribute.reference? -%>
+        %td= <%= singular_table_name %>.<%= attribute.name %>.name
+<% else -%>
         %td= <%= singular_table_name %>.<%= attribute.name %>
+<% end -%>
 <% end -%>
 <% if options[:cancan] -%>
         %td.action
