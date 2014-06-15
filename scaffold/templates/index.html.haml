@@ -14,7 +14,7 @@
 <% if attribute.reference? -%>
     - g.column name: <%= class_name %>.human_attribute_name(:<%= attribute.name %>),
       :attribute => '<%= attribute.name %>_id' do |<%= singular_table_name %>|
-      - <%= singular_table_name %>.<%= attribute.name %>.name
+      - <%= singular_table_name %>.<%= attribute.name %>.try :name
 <% else -%>
     - g.column name: <%= class_name %>.human_attribute_name(:<%= attribute.name %>),
       :attribute => '<%= attribute.name %>' do |<%= singular_table_name %>|
@@ -31,7 +31,7 @@
     - g.column do |<%= singular_table_name %>|
       - if can? :destroy, <%= singular_table_name %>
         - link_to t('destroy'), <%= singular_table_name %>,
-          data: {confirm: t('are_you_sure', default: 'Are you sure?')},
+          data: {confirm: t('.confirm', default: 'Are you sure?')},
           method: :delete, class: 'destroy'
 <% else -%>
     - g.column do |<%= singular_table_name %>|
@@ -40,7 +40,7 @@
       - link_to t('edit'), edit_<%= singular_table_name %>_path(<%= singular_table_name %>), class: 'edit'
     - g.column do |<%= singular_table_name %>|
       - link_to t('destroy'), <%= singular_table_name %>,
-        data: {confirm: t('are_you_sure', default: 'Are you sure?')},
+        data: {confirm: t('.confirm', default: 'Are you sure?')},
         method: :delete, class: 'destroy'
 <% end -%>
 -else
@@ -56,7 +56,11 @@
       - @<%= plural_table_name %>.each do |<%= singular_table_name %>|
         %tr{ :class => cycle(:odd, :even) }
 <% for attribute in attributes -%>
+<% if attribute.reference? -%>
+          %td= <%= singular_table_name %>.<%= attribute.name %>.try :name
+<% else -%>
           %td= <%= singular_table_name %>.<%= attribute.name %>
+<% end -%>
 <% end -%>
 <% if options[:cancan] -%>
           %td.action
@@ -68,13 +72,13 @@
           %td.action
             - if can? :destroy, <%= singular_table_name %>
               = link_to t('destroy'), <%= singular_table_name %>,
-                data: {confirm: t('are_you_sure', default: 'Are you sure?')},
+                data: {confirm: t('.confirm', default: 'Are you sure?')},
                 method: :delete, class: 'destroy'
 <% else -%>
           %td.action= link_to t('show'), <%= singular_table_name %>, class: 'show'
           %td.action= link_to t('edit'), edit_<%= singular_table_name %>_path(<%= singular_table_name %>), class: 'edit'
           %td.action= link_to t('destroy'), <%= singular_table_name %>,
-            data: {confirm: t('are_you_sure', :default => 'Are you sure?')},
+            data: {confirm: t('.confirm', :default => 'Are you sure?')},
             method: :delete, class: 'destroy'
 <% end -%>
 <% else -%>
@@ -91,7 +95,7 @@
       %tr{ :class => cycle(:odd, :even) }
 <% for attribute in attributes -%>
 <% if attribute.reference? -%>
-        %td= <%= singular_table_name %>.<%= attribute.name %>.name
+        %td= <%= singular_table_name %>.<%= attribute.name %>.try :name
 <% else -%>
         %td= <%= singular_table_name %>.<%= attribute.name %>
 <% end -%>
@@ -106,13 +110,13 @@
         %td.action
           - if can? :destroy, <%= singular_table_name %>
             = link_to t('destroy'), <%= singular_table_name %>,
-              data: {confirm: t('are_you_sure', default: 'Are you sure?')},
+              data: {confirm: t('.confirm', default: 'Are you sure?')},
               method: :delete, class: 'destroy'
 <% else -%>
         %td.action= link_to t('show'), <%= singular_table_name %>, class: 'show'
         %td.action= link_to t('edit'), edit_<%= singular_table_name %>_path(<%= singular_table_name %>), class: 'edit'
         %td.action= link_to t('destroy'), <%= singular_table_name %>,
-          data: {confirm: t('are_you_sure', :default => 'Are you sure?')},
+          data: {confirm: t('.confirm', :default => 'Are you sure?')},
           method: :delete, class: 'destroy'
 <% end -%>
 <% end -%>

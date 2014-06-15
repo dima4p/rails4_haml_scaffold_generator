@@ -15,7 +15,7 @@
 <% for attribute in attributes -%>
   %dt= <%= class_name %>.human_attribute_name :<%= attribute.name %>
 <% if attribute.reference? -%>
-  %dd= @<%= singular_table_name %>.<%= attribute.name %>.name
+  %dd= @<%= singular_table_name %>.<%= attribute.name %>.try :name
 <% else -%>
   %dd= @<%= singular_table_name %>.<%= attribute.name %>
 <% end -%>
