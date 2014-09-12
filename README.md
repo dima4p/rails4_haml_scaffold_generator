@@ -1,6 +1,6 @@
 # Deprecated!
 
-Long awaited event at least took place.
+The long awaited event at least took place.
 
 I've created the gem https://rubygems.org/gems/rspec_rails_scaffold_templates
 
