@@ -1,3 +1,15 @@
+# Deprecated!
+
+Long awaited event at least took place.
+
+I've created the gem https://rubygems.org/gems/rspec_rails_scaffold_templates
+
+It covers only scaffold functionality, as the rest does not need any change in rails.
+
+If you are interested in more automation of you work I suggest to look also at other my gems https://rubygems.org/profiles/koulikoff
+
+So, this project is not supported any more. ;-)
+
 # Information about this fork
 
 This for is no longer following the normal scaffolding layout of Rails.
@@ -59,9 +71,5 @@ Original idea from [Paul Barry's article on custom genrators][OriginalIdea]
 8. You can also add --simple_form if you use gem simple_form
 
         rails generate scaffold FancyModel <fields> --simple_form
-
-## TODO
-
-* Gemify (?)
 
 [OriginalIdea]: http://paulbarry.com/articles/2010/01/13/customizing-generators-in-rails-3
